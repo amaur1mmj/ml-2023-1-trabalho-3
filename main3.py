@@ -7,6 +7,16 @@ from sklearn.preprocessing import LabelEncoder, OneHotEncoder,StandardScaler
 # Ler o arquivo CSV
 data = pd.read_csv('dataset.csv')
 
+# entrada do usuario
+ano = input('Ano de trabalho ')
+experience = input('Nivel de cargo : ')
+cargo = input('Cargo : ')
+local = input('Local : ')
+local_emrpesa = input('Local emrpesa : ')
+tamnho_empresa = input('Tamanho da emrpesa: ')
+
+
+
 # Selecionar as colunas relevantes para treinamento
 columns = ['work_year', 'experience_level', 'job_title',
             'salary_in_usd', 'employee_residence', 'company_location', 'company_size']
@@ -84,15 +94,25 @@ print('MSE:', mse)
 
 
 # Exemplo de informações do usuário
+user_info1 = {
+    'work_year': ano,
+    'experience_level': experience,
+    #'employment_type': 'FT',
+    'job_title': cargo,
+    #'salary_currency': 'US',
+    'employee_residence': local,
+    'company_location': local_emrpesa,
+    'company_size': tamnho_empresa
+}
 user_info = {
     'work_year': 2023,
-    'experience_level': 'SE',
+    'experience_level': 'MI',
     #'employment_type': 'FT',
-    'job_title': 'Data Architect',
+    'job_title': 'Applied Scientist',
     #'salary_currency': 'US',
     'employee_residence': 'US',
-    'company_location': 'US',
-    'company_size': 'M'
+    'company_location': 'ES',
+    'company_size': 'L'
 }
 
 # Criar DataFrame com as informações do usuário codificadas
@@ -117,4 +137,5 @@ print('Salário previsto:', predicted_salary)
 
 predicted_salary = model.predict(user_data)
 salario_formatado = [format(valor, ".2f") for valor in predicted_salary]
-print("Salário previsto em USD: $", salario_formatado[0])
+hehe = float(salario_formatado[0])/ 100
+print("Salário previsto em USD: $", hehe)
